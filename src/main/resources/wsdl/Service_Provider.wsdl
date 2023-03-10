@@ -1,0 +1,75 @@
+<wsdl:definitions name="proveedor" targetNamespace="http://example/dummyservice/v1"
+	xmlns:serv="http://example/dummyservice/v1"
+	xmlns:p1="http://example/dummyservice/service"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:documentation></wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://example/dummyservice/v1"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://example/dummyservice/service" schemaLocation="Service_Provider.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="loginRequest">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:part name="loginReq" element="p1:loginRequest"/>
+	</wsdl:message>
+	<wsdl:message name="loginResponse">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:part name="loginResp" element="p1:loginResponse"/>
+	</wsdl:message>
+	<wsdl:message name="dispositivosRegistradosRequest">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:part name="dispositivosRegistradosReq" element="p1:dispositivosRegistradosRequest"/>
+	</wsdl:message>
+	<wsdl:message name="dispositivosRegistradosResponse">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:part name="dispositivosRegistradosRes" element="p1:dispositivosRegistradosResponse"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="proveedor">
+		<wsdl:documentation>.</wsdl:documentation>
+		<wsdl:operation name="login">
+			<wsdl:documentation></wsdl:documentation>
+			<wsdl:input name="loginRequest" message="serv:loginRequest"/>
+			<wsdl:output name="loginResponse" message="serv:loginResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="proveedor">
+		<wsdl:documentation>.</wsdl:documentation>
+		<wsdl:operation name="dispositivosRegistrados">
+			<wsdl:documentation></wsdl:documentation>
+			<wsdl:input name="dispositivosRegistradosRequest" message="serv:dispositivosRegistradosRequest"/>
+			<wsdl:output name="dispositivosRegistradosResponse" message="serv:dispositivosRegistradosResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="proveedorBinding" type="serv:proveedor">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"
+        />
+		<wsdl:operation name="login">
+			<wsdlsoap:operation soapAction="http://example/dummyservice/v1/login"/>
+			<wsdl:input name="loginRequest">
+				<wsdlsoap:body parts="loginReq" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="loginResponse">
+				<wsdlsoap:body parts="loginResp" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="dispositivosRegistrados">
+			<wsdlsoap:operation soapAction="http://example/dummyservice/v1/dispositivosRegistrados"/>
+			<wsdl:input name="dispositivosRegistradosRequest">
+				<wsdlsoap:body parts="dispositivosRegistradosReq" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="dispositivosRegistradosResponse">
+				<wsdlsoap:body parts="dispositivosRegistradosRes" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="proveedor">
+		<wsdl:port binding="serv:proveedorBinding" name="proveedor">
+			<wsdlsoap:address location="http://example/dummyservice/v1"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

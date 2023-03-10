@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" targetNamespace="http://example/dummyservice/service"
+        xmlns:p1="http://example/dummyservice/service"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+	<annotation>
+		<documentation></documentation>
+	</annotation>
+	
+	<xsd:element name="loginRequest" type="p1:loginRequestType"/>
+	<xsd:element name="loginResponse" type="p1:loginResponseType"/>
+	<xsd:element name="dispositivosRegistradosRequest" type="p1:dispositivosRequestType"/>
+	<xsd:element name="dispositivosRegistradosResponse" type="p1:dispositivosResponseType"/>
+	
+	<xsd:complexType name="loginRequestType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="username" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+			<xsd:element name="password" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="loginResponseType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="token" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="dispositivosRequestType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="devices" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="dispositivosResponseType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="dispositivos" type="p1:dispositivosType" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="dispositivosType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="dispositivo" type="p1:dispositivoType" minOccurs="1" maxOccurs="999" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="dispositivoType">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="nombre" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+			<xsd:element name="descripcion" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+			<xsd:element name="marca" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</schema>
